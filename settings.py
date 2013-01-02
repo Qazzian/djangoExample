@@ -1,5 +1,10 @@
 # Django settings for mysite project.
 
+import os
+
+PROJECT_ROOT = MAIN_FOLDER = main_folder = os.path.dirname(os.path.abspath(__file__))
+ROOT_FOLDER = root_folder = os.path.realpath(main_folder + '/../')
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -31,7 +36,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 SITE_ID = 1
 
@@ -106,6 +111,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '%s/templates' % ROOT_FOLDER,
 )
 
 INSTALLED_APPS = (
@@ -116,7 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'django_extensions',
