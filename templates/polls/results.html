@@ -1,0 +1,25 @@
+{% extends "polls/base.html" %}
+
+{% block pollContent %}
+
+<h1>{{ poll.question }}</h1>
+
+<style>
+    table { border-collapse: collapse; }
+    table .even { background-color: pink; }
+    table .odd { background-color: yellow; }
+    table td{ padding: 1ex 2em; }
+</style>
+
+<table>
+    <tbody>
+
+    {% for choice in poll.choice_set.all %}
+        <tr class="{% if forloop.counter0|divisibleby:"2" %}even{% else %}odd{% endif %}">
+            <td class="choice-name">{{ choice.choice }}</td>
+            <td class="choice-votes">{{ choice.votes }} vote{{ choice.votes|pluralize }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+{% endblock pollContent %}

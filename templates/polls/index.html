@@ -1,0 +1,22 @@
+{% extends "polls/base.html" %}
+
+{% block pollContent %}
+
+<h3>Recent Polls</h3>
+{% if latest_poll_list %}
+        {% for poll in latest_poll_list %}
+            <h3><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></h3>
+            <ul>
+                {% for choice in poll.choice_set.all %}
+                    <li>
+                        <span class="choice-name">{{ choice.choice }}</span>
+                        <span class="votes">{{ choice.votes }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+{% endblock pollContent %}
